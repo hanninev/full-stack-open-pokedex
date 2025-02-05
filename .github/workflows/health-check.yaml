@@ -1,0 +1,17 @@
+name: Health check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check health
+        uses: dawidd6/action-url-health-check@v2
+        with:
+          url: 'https://full-stack-open-pokedex-delicate-smoke-2788.fly.dev/health'
+          expected_status_codes: '200'
+          timeout: 10

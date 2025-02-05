@@ -1,0 +1,7 @@
+Both self-hosted and cloud-based CI environments have their advantages, and the choice depends on the project. For a small project, a cloud-based solution can be more cost-effective because you usually pay only for what you use. It also requires less maintenance since the service provider takes care of it. Additional benefits include built-in integrations and scalability, which means you don’t need to spend money implementing them yourself. This is almost always the best option for small and medium-sized projects. It also makes it easier to predict ongoing CI costs. Another advantage of a cloud-based solution is that it requires less workforce to manage the CI environment. Additionally, cloud providers often offer high availability and automatic updates, reducing downtime and security risks.
+
+A self-hosted environment is worth considering only for very large projects where you plan to hire someone to manage the CI system. It is also useful if the application is under continuous development. While self-hosted solutions have high initial costs, they can save money in the long run. However, you still need to cover maintenance staff salaries.
+
+On the other hand, there are cases where data storage location is important. For example, if the project involves a patient record system or government secrets, a self-hosted solution might be the better option.
+
+But for this 6-person project, a cloud-based solution is better, assuming that it's okay to store the data in a third-party cloud.

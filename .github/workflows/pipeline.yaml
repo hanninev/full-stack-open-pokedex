@@ -48,20 +48,10 @@ jobs:
         run: echo "DISCORD_WEBHOOK_URL is set (length = ${#DISCORD_WEBHOOK_URL})"
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      - name: Discord success message
-        if: success()
-        uses: rjstone/discord-webhook-notify@v1
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          severity: info
-          details: "Build success!"
-      - name: Discord failure message
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          severity: error
-          details: Build failed!
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04

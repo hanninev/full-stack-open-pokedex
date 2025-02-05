@@ -46,21 +46,18 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       - name: Discord success message
         if: ${{ success() }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
+        uses: rjstone/discord-webhook-notify@v1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          text: "✅ Build success!"
+          severity: info
+          details: "Build success!"
       - name: Discord failure message
-        if: ${{ always() && failure() }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          text: |
-            ❌ Build failed!
-            Commit: `${{ github.sha }}`
-            Actor: `${{ github.actor }}`
-            Message: `${{ github.event.head_commit.message }}`
           severity: error
+          details: Build failed!
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04

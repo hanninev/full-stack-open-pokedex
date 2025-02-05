@@ -46,8 +46,8 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
       - name: Debug secrets
         run: echo "DISCORD_WEBHOOK_URL is set (length = ${#DISCORD_WEBHOOK_URL})"
-          env:
-            DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       - name: Discord success message
         if: success()
         uses: rjstone/discord-webhook-notify@v1

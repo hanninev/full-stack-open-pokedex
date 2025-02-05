@@ -5,7 +5,6 @@ module.exports = {
     "jest/globals": true,
     "node": true,
     "es2021": true,
-    "browser": true
   },
   "extends": [
     "eslint:recommended",
@@ -25,7 +24,7 @@ module.exports = {
     "indent": [
       "error",
         2
-      ],
+    ],
     "linebreak-style": [
       "error",
       "unix"

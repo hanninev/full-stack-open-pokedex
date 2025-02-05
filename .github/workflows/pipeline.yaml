@@ -44,6 +44,22 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - name: Discord success message
+        if: ${{ success() }}
+        uses: IljaKhan/discord-webhook-notify@v1
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          message: "Build success!"
+      - name: Discord failure message
+        if: ${{ failure() }}
+        uses: IljaKhan/discord-webhook-notify@v1
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          message: |
+            Build failed!
+            Commit: `${{ github.sha }}`
+            Actor: `${{ github.actor }}`
+            Message: `${{ github.event.head_commit.message }}`
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
